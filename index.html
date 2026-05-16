@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYI Maintenance | Property Maintenance Services for London Property Managers</title>
+    <link rel="icon" href="favicon-image-url" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1E3A4A;
+            background-color: #FAF6EE;
+        }
+
+        /* Color Variables */
+        :root {
+            --primary: #1E3A4A;
+            --accent: #E8732A;
+            --background: #FAF6EE;
+            --white: #FFFFFF;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 250px;
+            height: auto;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background-color: var(--primary);
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 1rem;
+            width: 200px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            display: block;
+            padding: 0.5rem;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), #2C4F6A);
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #D96B20;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+            background-color: var(--background);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .service-description {
+            color: #555;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .phone-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: auto;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .nav-menu {
+                display: block;
+                position: static;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                width: auto;
+            }
+
+            .nav-menu ul {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .nav-menu li {
+                margin-bottom: 0;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- Replace with your horizontal logo URL -->
+                <img src="horizental-logo-file-url" alt="NYI Maintenance Logo">
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Professional Property Maintenance Services</h1>
+            <p>Serving London letting agents and property managers with reliable, quality maintenance solutions for residential rental properties.</p>
+            <a href="#contact" class="cta-button">Contact Us for Quick, Quality Service</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <!-- Painting & Decorating -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3 class="service-title">Painting & Decorating</h3>
+                    <p class="service-description">Professional interior and exterior painting services for residential properties.</p>
+                </div>
+
+                <!-- Carpentry Repairs -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3 class="service-title">Carpentry Repairs</h3>
+                    <p class="service-description">Skilled carpentry work including door, window, and furniture repairs.</p>
+                </div>
+
+                <!-- HMO Upgrades -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-title">HMO Upgrades</h3>
+                    <p class="service-description">Compliance upgrades and improvements for HMO residential properties.</p>
+                </div>
+
+                <!-- Gas Safe Inspections -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="service-title">Gas Safe Inspections</h3>
+                    <p class="service-description">Certified Gas Safe inspections and safety checks for rental properties.</p>
+                </div>
+
+                <!-- EICR Inspections -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="service-title">EICR Inspections</h3>
+                    <p class="service-description">Electrical Installation Condition Reports for property compliance.</p>
+                </div>
+
+                <!-- EPC Inspections -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">EPC Inspections</h3>
+                    <p class="service-description">Energy Performance Certificate assessments and reports.</p>
+                </div>
+
+                <!-- Weekly Cleaning Service -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3 class="service-title">Weekly Cleaning Service</h3>
+                    <p class="service-description">Regular cleaning services for HMO landlords and property managers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p>For professional maintenance services tailored to property managers and letting agents in London.</p>
+            
+            <div class="contact-info">
+                <!-- Email with anti-scrape measure -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span>Email: 
+                        <!-- This hides the email from basic scrapers -->
+                        <span id="emailText" style="unicode-bidi: bidi-override; direction: rtl;">moc.ecneniatnamiyin@ofni</span>
+                    </span>
+                </div>
+                
+                <!-- Phone -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <a href="tel:02080480010" class="phone-link">020 8048 0010</a>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 1rem;">Contact us today to discuss your property maintenance requirements.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <!-- Replace with your square logo URL -->
+                <img src="squarelogourl" alt="NYI Maintenance Logo">
+            </div>
+            <p class="footer-text">NYI Maintenance &copy; <span id="currentYear"></span>. Professional property maintenance services for London letting agents and property managers.</p>
+            <p class="footer-text">info@nyimaintenance.co.uk | 020 8048 0010</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link (for mobile)
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Email reversal for display only (actual email is reversed in HTML)
+        // This is a simple anti-scrape technique
+        const emailElement = document.getElementById('emailText');
+        if (emailElement) {
+            // The email is stored reversed in the HTML
+            const reversedEmail = emailElement.textContent;
+            // Reverse it back for display on click/touch
+            emailElement.addEventListener('click', function() {
+                const normalEmail = reversedEmail.split('').reverse().join('');
+                window.location.href = 'mailto:' + normalEmail;
+            });
+            // Also allow right-click context menu
+            emailElement.addEventListener('contextmenu', function() {
+                const normalEmail = reversedEmail.split('').reverse().join('');
+                this.textContent = normalEmail;
+            });
+        }
+    </script>
+</body>
+</html>
